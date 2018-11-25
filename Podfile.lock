@@ -1,0 +1,20 @@
+PODS:
+  - Anchors (2.4.0)
+  - DefaultsKit (0.0.9)
+
+DEPENDENCIES:
+  - Anchors
+  - DefaultsKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Anchors
+    - DefaultsKit
+
+SPEC CHECKSUMS:
+  Anchors: 75614cac462e063b395386e31eb593a856d831a8
+  DefaultsKit: e47d11c54a53c66f9e5c65a1992dead90bc7144f
+
+PODFILE CHECKSUM: 2fbc8348c9de45a6d7a886817ffcba0b11fe86fb
+
+COCOAPODS: 1.5.3
