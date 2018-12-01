@@ -32,16 +32,23 @@ class ThoughtCell: UITableViewCell {
         return label
     }()
 
-    private lazy var swipeGestureRecognizer: UISwipeGestureRecognizer = {
+    private lazy var rightSwipeGestureRecognizer: UISwipeGestureRecognizer = {
         let gestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(ThoughtCell.incrementThoughtCount))
         gestureRecognizer.direction = .right
+        return gestureRecognizer
+    }()
+
+    private lazy var leftSwipeGestureRecognizer: UISwipeGestureRecognizer = {
+        let gestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(ThoughtCell.decrementThoughtCount))
+        gestureRecognizer.direction = .left
         return gestureRecognizer
     }()
 
     // MARK: - Lifecycle
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.addGestureRecognizer(self.swipeGestureRecognizer)
+        self.addGestureRecognizer(self.rightSwipeGestureRecognizer)
+        self.addGestureRecognizer(self.leftSwipeGestureRecognizer)
         self.addSubview(titleLabel)
         self.addSubview(countLabel)
         activate(self.titleLabel.anchor.left.constant(20),
@@ -53,11 +60,11 @@ class ThoughtCell: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     func configureWithThought(thought: Thought) {
         self.thought = thought
         self.titleLabel.text = thought.title
-        self.countLabel.text = String(thought.count)
+        self.countLabel.text = String(thought.listOfOccurrences.count)
     }
 
     // MARK: - PRIVATE HELPERS
@@ -66,7 +73,17 @@ class ThoughtCell: UITableViewCell {
         guard var currentCountInt = Int(currentCountString) else { return }
         guard let thought = self.thought else { return }
         currentCountInt += 1
-        thought.count += 1
+        thought.listOfOccurrences.append(Date())
+        self.countLabel.text = String(currentCountInt)
+        self.delegate?.saveThoughts()
+    }
+
+    @objc private func decrementThoughtCount() {
+        guard let currentCountString = self.countLabel.text else { return }
+        guard var currentCountInt = Int(currentCountString), currentCountInt > 0 else { return }
+        guard let thought = self.thought else { return }
+        currentCountInt -= 1
+        thought.listOfOccurrences.removeLast()
         self.countLabel.text = String(currentCountInt)
         self.delegate?.saveThoughts()
     }

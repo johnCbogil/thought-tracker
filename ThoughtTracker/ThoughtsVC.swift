@@ -61,24 +61,18 @@ extension ThoughtsVC: ListOfThoughtsTableViewDelegate {
 
     @objc private func presentAlert() {
 
-        //1. Create the alert controller.
         let alert = UIAlertController(title: "Add thought", message: nil, preferredStyle: .alert)
-
-        //2. Add the text field. You can configure it however you need.
         alert.addTextField()
-
-        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .default, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             guard let textField = alert?.textFields?.first, let text = textField.text else { return }
             if !text.isEmpty {
-                let newThought = Thought(count: 0, title: text)
+                let newThought = Thought(date: Date(), title: text)
                 self.listOfThoughts.append(newThought)
                 self.saveThoughts()
                 self.tableView.reloadData()
             }
         }))
-
-        // 4. Present the alert.
         self.present(alert, animated: true, completion: {  })
     }
 }
@@ -101,5 +95,7 @@ extension ThoughtsVC: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let detailVC = ThoughtDetailVC(thought: self.listOfThoughts[indexPath.row])
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
