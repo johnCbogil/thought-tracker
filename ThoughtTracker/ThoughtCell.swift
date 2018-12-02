@@ -13,7 +13,7 @@ import Anchors
 class ThoughtCell: UITableViewCell {
     // MARK: - PROPERTIES
     static let identifier = "ThoughtCell"
-    weak var delegate: ListOfThoughtsTableViewDelegate?
+    var delegate: SaveThoughtsDelegate?
     var thought: Thought?
 
     // MARK: - VIEWS

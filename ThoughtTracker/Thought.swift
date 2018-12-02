@@ -10,17 +10,30 @@ import Foundation
 
 class Thought: Codable {
     var listOfOccurrences = [Date]()
+    var formattedOccurrences = [DateCount]()
     let title: String
 
     init(date: Date, title: String) {
-        self.listOfOccurrences.append(date)
         self.title = title
+
+//        // FOR TESTING
+//        let testDate = Date(timeIntervalSinceNow: -370000)
+//        self.listOfOccurrences.append(testDate)
+
+        self.formattedOccurrences.append(contentsOf: getFormattedOccurrences())
     }
 
     func getFormattedOccurrences() -> [DateCount] {
 
+        var datesBetweenArray = [Date]()
+        let sortedOccurrences = self.listOfOccurrences.sorted(by: { $0.compare($1) == .orderedAscending })
+        if let firstDate = sortedOccurrences.first {
+            datesBetweenArray = Date().generateDatesArrayBetweenTwoDates(startDate: firstDate , endDate: Date())
+            datesBetweenArray.append(contentsOf: self.listOfOccurrences)
+        }
+
         // CREATE A DICT OF DATES AND COUNTS
-        let dateCounts = self.listOfOccurrences.reduce(into: [String: Int]()) { dict, date in
+        let dateCounts = datesBetweenArray.reduce(into: [String: Int]()) { dict, date in
             let formatter = DateFormatter()
             formatter.dateStyle = .long
             let key = formatter.string(from: date)
@@ -30,13 +43,15 @@ class Thought: Codable {
         // BREAK DICT INTO ARRAY OF OBJECTS
         var array = [DateCount]()
         for (date, count) in dateCounts {
-            let dateCountStruct = DateCount.init(dateString: date, count: count)
+            let dateCountStruct = DateCount(dateString: date, count: count-1)
             array.append(dateCountStruct)
         }
 
         // SORT ARRAY BY DATE
-        array.sort(by: { $0.dateString.compare($1.dateString) == .orderedDescending })
+        array.sort(by: { $0.date > $1.date })
 
         return array
     }
 }
+
+

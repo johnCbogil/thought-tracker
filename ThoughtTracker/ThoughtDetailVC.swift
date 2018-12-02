@@ -13,6 +13,8 @@ import UIKit
 class ThoughtDetailVC: UIViewController {
     // MARK: - PROPERTIES
     let thought: Thought
+    let formattedOccurrences: [DateCount]
+
     // MARK: - VIEWS
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -33,6 +35,7 @@ class ThoughtDetailVC: UIViewController {
     // MARK: - LIFECYCLE
     init(thought: Thought) {
         self.thought = thought
+        self.formattedOccurrences = thought.getFormattedOccurrences()
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -52,61 +55,20 @@ class ThoughtDetailVC: UIViewController {
                  self.tableView.anchor.top.to(self.titleLabel.anchor.bottom),
                  self.tableView.anchor.centerX,
                  self.tableView.anchor.bottom.left.right)
-
     }
 }
 
+// MARK: TABLEVIEW DELEGATE METHODS
 extension ThoughtDetailVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.thought.getFormattedOccurrences().count
+        return self.formattedOccurrences.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: OccurrenceCell.identifier, for: indexPath) as! OccurrenceCell
-        let dateCount = self.thought.getFormattedOccurrences()[indexPath.row]
+        let dateCount = self.formattedOccurrences[indexPath.row]
         cell.dateLabel.text = dateCount.dateString
         cell.countLabel.text = String(dateCount.count)
         return cell
     }
-}
-
-class OccurrenceCell: UITableViewCell {
-    // MARK: - PROPERTIES
-    static let identifier = "OccurrenceCell"
-
-    // MARK: - VIEWS
-    lazy var dateLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 23)
-        label.textColor = .black
-        return label
-    }()
-
-    lazy var countLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 23)
-        label.textColor = .black
-        label.text = "0"
-        return label
-    }()
-
-    // MARK: - Lifecycle
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.addSubview(dateLabel)
-        self.addSubview(countLabel)
-        activate(self.dateLabel.anchor.left.constant(20),
-                 self.dateLabel.anchor.centerY,
-                 self.countLabel.anchor.right.constant(-20),
-                 self.countLabel.anchor.centerY)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-struct DateCount: Codable {
-    var dateString: String
-    var count: Int
 }

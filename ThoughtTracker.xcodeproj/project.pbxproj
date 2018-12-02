@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		23EA67AF32F0D0797C4A1E7D /* Pods_ThoughtTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8014BAF3D4AFF9741F3D3A65 /* Pods_ThoughtTracker.framework */; };
 		369470C759A719B78A182E52 /* Pods_ThoughtTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9A1606C2E12F4036BCF562 /* Pods_ThoughtTrackerUITests.framework */; };
+		5206C1C121B47A5500F91ACD /* OccurrenceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206C1C021B47A5500F91ACD /* OccurrenceCell.swift */; };
+		5206C1C321B47B6700F91ACD /* DateCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206C1C221B47B6700F91ACD /* DateCount.swift */; };
+		5206C1C521B4811D00F91ACD /* SaveThoughtsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206C1C421B4811D00F91ACD /* SaveThoughtsDelegate.swift */; };
+		5206C1C721B481A900F91ACD /* Date+ThoughtTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5206C1C621B481A900F91ACD /* Date+ThoughtTracker.swift */; };
 		524A2C9421AB417600A253F3 /* ThoughtCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524A2C9321AB417600A253F3 /* ThoughtCell.swift */; };
 		524A2C9621AB41CC00A253F3 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524A2C9521AB41CC00A253F3 /* Thought.swift */; };
 		524A2C9821AB448F00A253F3 /* ThoughtDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524A2C9721AB448F00A253F3 /* ThoughtDetailVC.swift */; };
@@ -39,6 +43,10 @@
 
 /* Begin PBXFileReference section */
 		0DB187EB808CC1D9D6434304 /* Pods-ThoughtTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThoughtTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThoughtTracker/Pods-ThoughtTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		5206C1C021B47A5500F91ACD /* OccurrenceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccurrenceCell.swift; sourceTree = "<group>"; };
+		5206C1C221B47B6700F91ACD /* DateCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCount.swift; sourceTree = "<group>"; };
+		5206C1C421B4811D00F91ACD /* SaveThoughtsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveThoughtsDelegate.swift; sourceTree = "<group>"; };
+		5206C1C621B481A900F91ACD /* Date+ThoughtTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ThoughtTracker.swift"; sourceTree = "<group>"; };
 		524A2C9321AB417600A253F3 /* ThoughtCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtCell.swift; sourceTree = "<group>"; };
 		524A2C9521AB41CC00A253F3 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		524A2C9721AB448F00A253F3 /* ThoughtDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailVC.swift; sourceTree = "<group>"; };
@@ -141,9 +149,13 @@
 			children = (
 				5281AFE321AA197500B83A9F /* AppDelegate.swift */,
 				5281AFE521AA197500B83A9F /* ThoughtsVC.swift */,
+				5206C1C421B4811D00F91ACD /* SaveThoughtsDelegate.swift */,
 				524A2C9721AB448F00A253F3 /* ThoughtDetailVC.swift */,
+				5206C1C221B47B6700F91ACD /* DateCount.swift */,
 				524A2C9321AB417600A253F3 /* ThoughtCell.swift */,
+				5206C1C021B47A5500F91ACD /* OccurrenceCell.swift */,
 				524A2C9521AB41CC00A253F3 /* Thought.swift */,
+				5206C1C621B481A900F91ACD /* Date+ThoughtTracker.swift */,
 				5281AFEA21AA197600B83A9F /* Assets.xcassets */,
 				5281AFEF21AA197600B83A9F /* Info.plist */,
 			);
@@ -394,9 +406,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5206C1C121B47A5500F91ACD /* OccurrenceCell.swift in Sources */,
+				5206C1C321B47B6700F91ACD /* DateCount.swift in Sources */,
 				524A2C9421AB417600A253F3 /* ThoughtCell.swift in Sources */,
+				5206C1C721B481A900F91ACD /* Date+ThoughtTracker.swift in Sources */,
 				5281AFE621AA197500B83A9F /* ThoughtsVC.swift in Sources */,
 				5281AFE421AA197500B83A9F /* AppDelegate.swift in Sources */,
+				5206C1C521B4811D00F91ACD /* SaveThoughtsDelegate.swift in Sources */,
 				524A2C9621AB41CC00A253F3 /* Thought.swift in Sources */,
 				524A2C9821AB448F00A253F3 /* ThoughtDetailVC.swift in Sources */,
 			);

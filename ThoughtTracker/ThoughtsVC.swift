@@ -10,10 +10,6 @@ import UIKit
 import Anchors
 import DefaultsKit
 
-protocol ListOfThoughtsTableViewDelegate: class {
-    func saveThoughts()
-}
-
 class ThoughtsVC: UIViewController {
 
     // MARK: - PROPERTIES
@@ -53,7 +49,7 @@ class ThoughtsVC: UIViewController {
 }
 
 // MARK: - Helpers
-extension ThoughtsVC: ListOfThoughtsTableViewDelegate {
+extension ThoughtsVC: SaveThoughtsDelegate {
 
     func saveThoughts() {
         defaults.set(self.listOfThoughts, for: thoughtsKey)
