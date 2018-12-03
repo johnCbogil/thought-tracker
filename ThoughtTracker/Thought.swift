@@ -12,14 +12,25 @@ class Thought: Codable {
     var listOfOccurrences = [Date]()
     var formattedOccurrences = [DateCount]()
     let title: String
+    var todaysCount: Int {
+        get {
+            var count = 0
+            for date in self.listOfOccurrences {
+                if Calendar.current.compare(date, to: Date(), toGranularity: .day) == .orderedSame {
+                    count += 1
+                }
+            }
+            return count
+        }
+    }
 
     init(date: Date, title: String) {
         self.title = title
 
-//        // FOR TESTING
-//        let testDate = Date(timeIntervalSinceNow: -370000)
-//        self.listOfOccurrences.append(testDate)
-
+                // FOR TESTING
+                let testDate = Date(timeIntervalSinceNow: -370000)
+                self.listOfOccurrences.append(testDate)
+        
         self.formattedOccurrences.append(contentsOf: getFormattedOccurrences())
     }
 

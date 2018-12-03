@@ -6,6 +6,7 @@
 //  Copyright © 2018 John Bogil. All rights reserved.
 //
 
-protocol SaveThoughtsDelegate {
+protocol ManageThoughtsDelegate {
     func saveThoughts()
+    func deleteThought(thought: Thought)
 }

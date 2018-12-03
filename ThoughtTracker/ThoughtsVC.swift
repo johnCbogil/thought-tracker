@@ -30,7 +30,7 @@ class ThoughtsVC: UIViewController {
     }()
 
     private lazy var addThoughtButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ThoughtsVC.presentAlert))
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.presentAlert))
         return button
     }()
 
@@ -45,14 +45,6 @@ class ThoughtsVC: UIViewController {
         self.tableView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi)
         guard let listOfThoughts = defaults.get(for: thoughtsKey) else { return }
         self.listOfThoughts = listOfThoughts
-    }
-}
-
-// MARK: - Helpers
-extension ThoughtsVC: SaveThoughtsDelegate {
-
-    func saveThoughts() {
-        defaults.set(self.listOfThoughts, for: thoughtsKey)
     }
 
     @objc private func presentAlert() {
@@ -71,6 +63,21 @@ extension ThoughtsVC: SaveThoughtsDelegate {
         }))
         self.present(alert, animated: true, completion: {  })
     }
+}
+
+// MARK: - Thought Management
+extension ThoughtsVC: ManageThoughtsDelegate {
+    func deleteThought(thought: Thought) {
+        self.listOfThoughts = self.listOfThoughts.filter({$0 !== thought})
+        self.tableView.reloadData()
+        self.saveThoughts()
+    }
+
+    func saveThoughts() {
+        defaults.set(self.listOfThoughts, for: thoughtsKey)
+    }
+
+
 }
 
 // MARK: - UITableViewDelegate Methods
@@ -92,6 +99,7 @@ extension ThoughtsVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let detailVC = ThoughtDetailVC(thought: self.listOfThoughts[indexPath.row])
+        detailVC.delegate = self
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }

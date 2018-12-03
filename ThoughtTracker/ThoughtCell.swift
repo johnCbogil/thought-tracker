@@ -13,7 +13,7 @@ import Anchors
 class ThoughtCell: UITableViewCell {
     // MARK: - PROPERTIES
     static let identifier = "ThoughtCell"
-    var delegate: SaveThoughtsDelegate?
+    var delegate: ManageThoughtsDelegate?
     var thought: Thought?
 
     // MARK: - VIEWS
@@ -64,7 +64,7 @@ class ThoughtCell: UITableViewCell {
     func configureWithThought(thought: Thought) {
         self.thought = thought
         self.titleLabel.text = thought.title
-        self.countLabel.text = String(thought.listOfOccurrences.count)
+        self.countLabel.text = String(thought.todaysCount)
     }
 
     // MARK: - PRIVATE HELPERS

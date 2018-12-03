@@ -14,6 +14,7 @@ class ThoughtDetailVC: UIViewController {
     // MARK: - PROPERTIES
     let thought: Thought
     let formattedOccurrences: [DateCount]
+    var delegate: ManageThoughtsDelegate?
 
     // MARK: - VIEWS
     private lazy var tableView: UITableView = {
@@ -32,11 +33,17 @@ class ThoughtDetailVC: UIViewController {
         return label
     }()
 
+    private lazy var deleteButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.trash , target: self, action: #selector(self.deleteThought))
+        return button
+    }()
+
     // MARK: - LIFECYCLE
     init(thought: Thought) {
         self.thought = thought
         self.formattedOccurrences = thought.getFormattedOccurrences()
         super.init(nibName: nil, bundle: nil)
+        self.navigationItem.rightBarButtonItem = self.deleteButton
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -55,6 +62,16 @@ class ThoughtDetailVC: UIViewController {
                  self.tableView.anchor.top.to(self.titleLabel.anchor.bottom),
                  self.tableView.anchor.centerX,
                  self.tableView.anchor.bottom.left.right)
+    }
+
+    @objc private func deleteThought() {
+        let alert = UIAlertController(title: "Delete thought?", message: "This cannot be undone.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction.init(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak alert] (_) in
+            self.delegate?.deleteThought(thought: self.thought)
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alert, animated: true, completion: {  })
     }
 }
 
