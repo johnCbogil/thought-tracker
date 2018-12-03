@@ -14,9 +14,13 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        let navController = UINavigationController(rootViewController: ThoughtsVC())
-        self.viewControllers = [navController]
-
+        let thoughtsVC = ThoughtsVC()
+        thoughtsVC.title = "Today's Thoughts"
+        let navController = UINavigationController(rootViewController: thoughtsVC)
+        let pageVC = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        pageVC.title = "Education"
+        self.viewControllers = [pageVC, navController]
+        self.selectedIndex = 1
     }
 
 }
