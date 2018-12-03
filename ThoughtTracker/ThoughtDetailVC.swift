@@ -67,11 +67,11 @@ class ThoughtDetailVC: UIViewController {
     @objc private func deleteThought() {
         let alert = UIAlertController(title: "Delete thought?", message: "This cannot be undone.", preferredStyle: .alert)
         alert.addAction(UIAlertAction.init(title: "Cancel", style: .default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak alert] (_) in
+        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (_) in
             self.delegate?.deleteThought(thought: self.thought)
             self.navigationController?.popViewController(animated: true)
         }))
-        self.present(alert, animated: true, completion: {  })
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

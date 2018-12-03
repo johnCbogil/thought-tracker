@@ -38,7 +38,7 @@ class ThoughtsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = self.addThoughtButton
-        self.title = "Your Thoughts"
+        self.title = "Today's Thoughts"
         self.view.backgroundColor = .white
         self.view.addSubview(self.tableView)
         activate(self.tableView.anchor.edges)
