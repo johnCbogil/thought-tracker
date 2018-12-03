@@ -21,6 +21,7 @@
 		5281AFEB21AA197600B83A9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5281AFEA21AA197600B83A9F /* Assets.xcassets */; };
 		5281AFF921AA197600B83A9F /* ThoughtTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5281AFF821AA197600B83A9F /* ThoughtTrackerTests.swift */; };
 		5281B00421AA197600B83A9F /* ThoughtTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5281B00321AA197600B83A9F /* ThoughtTrackerUITests.swift */; };
+		52E7952621B4BF8400ABB36F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7952521B4BF8400ABB36F /* MainTabBarController.swift */; };
 		C5C36D1C99AD1374BA6AB7D5 /* Pods_ThoughtTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0784EEAF2B0FC58D32B47F /* Pods_ThoughtTrackerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		5281AFFF21AA197600B83A9F /* ThoughtTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThoughtTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5281B00321AA197600B83A9F /* ThoughtTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtTrackerUITests.swift; sourceTree = "<group>"; };
 		5281B00521AA197600B83A9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52E7952521B4BF8400ABB36F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		8014BAF3D4AFF9741F3D3A65 /* Pods_ThoughtTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ThoughtTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84A9C62AE600F76B071136E1 /* Pods-ThoughtTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThoughtTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ThoughtTrackerTests/Pods-ThoughtTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		8D827DF3CD30D16A1369653F /* Pods-ThoughtTrackerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ThoughtTrackerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ThoughtTrackerUITests/Pods-ThoughtTrackerUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				5206C1C621B481A900F91ACD /* Date+ThoughtTracker.swift */,
 				5281AFEA21AA197600B83A9F /* Assets.xcassets */,
 				5281AFEF21AA197600B83A9F /* Info.plist */,
+				52E7952521B4BF8400ABB36F /* MainTabBarController.swift */,
 			);
 			path = ThoughtTracker;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				5206C1C121B47A5500F91ACD /* OccurrenceCell.swift in Sources */,
 				5206C1C321B47B6700F91ACD /* DateCount.swift in Sources */,
 				524A2C9421AB417600A253F3 /* ThoughtCell.swift in Sources */,
+				52E7952621B4BF8400ABB36F /* MainTabBarController.swift in Sources */,
 				5206C1C721B481A900F91ACD /* Date+ThoughtTracker.swift in Sources */,
 				5281AFE621AA197500B83A9F /* ThoughtsVC.swift in Sources */,
 				5281AFE421AA197500B83A9F /* AppDelegate.swift in Sources */,

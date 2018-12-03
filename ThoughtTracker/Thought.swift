@@ -30,7 +30,7 @@ class Thought: Codable {
 //                // FOR TESTING
 //                let testDate = Date(timeIntervalSinceNow: -370000)
 //                self.listOfOccurrences.append(testDate)
-        
+
         self.formattedOccurrences.append(contentsOf: getFormattedOccurrences())
     }
 
