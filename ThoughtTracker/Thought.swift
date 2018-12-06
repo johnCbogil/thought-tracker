@@ -27,42 +27,58 @@ class Thought: Codable {
     init(date: Date, title: String) {
         self.title = title
 
-//                // FOR TESTING
-//                let testDate = Date(timeIntervalSinceNow: -370000)
-//                self.listOfOccurrences.append(testDate)
+                // FOR TESTING
+                let testDate = Date(timeIntervalSinceNow: -570000)
+                self.listOfOccurrences.append(testDate)
         
         self.formattedOccurrences.append(contentsOf: getFormattedOccurrences())
     }
 
     func getFormattedOccurrences() -> [DateCount] {
 
+        // GENERATE LIST OF DATES BETWEEN FIRST DATE AND TODAY
         var datesBetweenArray = [Date]()
         let sortedOccurrences = self.listOfOccurrences.sorted(by: { $0.compare($1) == .orderedAscending })
         if let firstDate = sortedOccurrences.first {
             datesBetweenArray = Date().generateDatesArrayBetweenTwoDates(startDate: firstDate , endDate: Date())
-            datesBetweenArray.append(contentsOf: self.listOfOccurrences)
         }
 
-        // CREATE A DICT OF DATES AND COUNTS
-        let dateCounts = datesBetweenArray.reduce(into: [String: Int]()) { dict, date in
+        // CREATE A DICT OF DATES AND COUNTS FROM DATESBETWEENARRAY WITH COUNTS OF ZERO
+        let dateCountsBetween = datesBetweenArray.reduce(into: [String: Int]()) { dict, date in
+            let formatter = DateFormatter()
+            formatter.dateStyle = .long
+            let key = formatter.string(from: date)
+            dict[key, default: 0] = 0
+        }
+        
+        // CREATE A DICT OF DATES AND COUNTS FROM LISTOFOCCURRENCES WITH ACCURATE DATE COUNTS
+        let dateCountsOccurrences = self.listOfOccurrences.reduce(into: [String: Int]()) { dict, date in
             let formatter = DateFormatter()
             formatter.dateStyle = .long
             let key = formatter.string(from: date)
             dict[key, default: 0] += 1
         }
 
-        // BREAK DICT INTO ARRAY OF OBJECTS
-        var array = [DateCount]()
-        for (date, count) in dateCounts {
-            let dateCountStruct = DateCount(dateString: date, count: count-1)
-            array.append(dateCountStruct)
+        // CHANGE EMPTY DATES INTO DATECOUNTS
+        var emptyDateCountArray = [DateCount]()
+        for (date, count) in dateCountsBetween {
+            let dateCountStruct = DateCount(dateString: date, count: count)
+            emptyDateCountArray.append(dateCountStruct)
         }
+        
+        // CHANGE ACTUAL DATES INTO DATECOUNTS
+        var actualDateCountsArray = [DateCount]()
+        for (date, count) in dateCountsOccurrences {
+            let dateCountStruct = DateCount(dateString: date, count: count)
+            actualDateCountsArray.append(dateCountStruct)
+        }
+        
+        // MERGE BOTH DATECOUNT ARRAYS
+        actualDateCountsArray.append(contentsOf: emptyDateCountArray)
 
         // SORT ARRAY BY DATE
-        array.sort(by: { $0.date > $1.date })
+        actualDateCountsArray.sort(by: { $0.date > $1.date })
 
-        return array
+        return actualDateCountsArray
     }
 }
-
-
