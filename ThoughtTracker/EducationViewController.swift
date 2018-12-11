@@ -9,7 +9,7 @@
 import UIKit
 import Anchors
 
-class EducationViewController: UIViewController {
+class LearnViewController: UIViewController {
 
     var index = 0
     let questionsArray = ["What is an intrusive thought?", "What can I do to treat intrusive thoughts?", "How does counting help?" ]
@@ -37,7 +37,7 @@ class EducationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Education"
+        self.title = "Learn"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.questionLabel.text = questionsArray[index]
         self.answerLabel.text = answersArray[index]

@@ -26,12 +26,18 @@ class ThoughtsVC: UIViewController {
         tableView.register(ThoughtCell.self, forCellReuseIdentifier: ThoughtCell.identifier)
         tableView.tableFooterView = UIView()
         tableView.isScrollEnabled = false
+        tableView.backgroundColor = .clear
         return tableView
     }()
 
     private lazy var addThoughtButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(self.presentAlert))
         return button
+    }()
+
+    private lazy var emptyState: ThoughtsVCEmptyState = {
+        let emptyState = ThoughtsVCEmptyState()
+        return emptyState
     }()
 
     // MARK: - Lifecyle
@@ -41,10 +47,19 @@ class ThoughtsVC: UIViewController {
         self.title = "Today's Thoughts"
         self.view.backgroundColor = .white
         self.view.addSubview(self.tableView)
-        activate(self.tableView.anchor.edges)
+        self.view.addSubview(self.emptyState)
+        activate(self.tableView.anchor.edges,
+                 self.emptyState.anchor.size.equal.to(50),
+                 self.emptyState.anchor.center
+        )
         self.tableView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi)
         guard let listOfThoughts = defaults.get(for: thoughtsKey) else { return }
         self.listOfThoughts = listOfThoughts
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.toggleEmptyState()
     }
 
     @objc private func presentAlert() {
@@ -65,19 +80,26 @@ class ThoughtsVC: UIViewController {
     }
 }
 
+// MARK: - Private Helpers
+extension ThoughtsVC {
+    private func toggleEmptyState() {
+        self.emptyState.isHidden = self.listOfThoughts.count != 0
+    }
+}
+
 // MARK: - Thought Management
 extension ThoughtsVC: ManageThoughtsDelegate {
     func deleteThought(thought: Thought) {
         self.listOfThoughts = self.listOfThoughts.filter({$0 !== thought})
         self.tableView.reloadData()
         self.saveThoughts()
+        self.toggleEmptyState()
     }
 
     func saveThoughts() {
         defaults.set(self.listOfThoughts, for: thoughtsKey)
+        self.toggleEmptyState()
     }
-
-
 }
 
 // MARK: - UITableViewDelegate Methods

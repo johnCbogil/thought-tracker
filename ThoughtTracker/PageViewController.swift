@@ -11,7 +11,7 @@ import Anchors
 
 class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource {
 
-    var listOfViewControllers = [EducationViewController]()
+    var listOfViewControllers = [LearnViewController]()
     let pageCount = 3
     var pageControl = UIPageControl()
     static let identifier = "PageViewController"
@@ -27,11 +27,11 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     }
 
     fileprivate func configureViewControllers() {
-        let vc1 =  EducationViewController()
+        let vc1 =  LearnViewController()
         vc1.index = 0
-        let vc2 = EducationViewController()
+        let vc2 = LearnViewController()
         vc2.index = 1
-        let vc3 = EducationViewController()
+        let vc3 = LearnViewController()
         vc3.index = 2
         self.listOfViewControllers.append(contentsOf: [vc1,vc2,vc3])
         setViewControllers([getViewControllerAtIndex(index: 0)] as [UIViewController], direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
@@ -51,7 +51,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        let pageContent: EducationViewController = viewController as! EducationViewController
+        let pageContent: LearnViewController = viewController as! LearnViewController
         var index = pageContent.index
         if ((index == 0) || (index == NSNotFound)) {
             return nil
@@ -61,7 +61,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        let pageContent: EducationViewController = viewController as! EducationViewController
+        let pageContent: LearnViewController = viewController as! LearnViewController
         var index = pageContent.index
         if (index == NSNotFound) {
             return nil;
@@ -74,15 +74,15 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         return getViewControllerAtIndex(index: index)
     }
 
-    fileprivate func getViewControllerAtIndex(index: NSInteger) -> EducationViewController {
+    fileprivate func getViewControllerAtIndex(index: NSInteger) -> LearnViewController {
         // Create a new view controller and pass suitable data.
-        let pageContentViewController = EducationViewController()
+        let pageContentViewController = LearnViewController()
         pageContentViewController.index = index
         return pageContentViewController
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        let pageContentViewController = pageViewController.viewControllers![0] as! EducationViewController
+        let pageContentViewController = pageViewController.viewControllers![0] as! LearnViewController
         pageControl.currentPage = pageContentViewController.index
     }
 }

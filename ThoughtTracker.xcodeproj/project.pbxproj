@@ -21,6 +21,7 @@
 		5281AFEB21AA197600B83A9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5281AFEA21AA197600B83A9F /* Assets.xcassets */; };
 		5281AFF921AA197600B83A9F /* ThoughtTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5281AFF821AA197600B83A9F /* ThoughtTrackerTests.swift */; };
 		5281B00421AA197600B83A9F /* ThoughtTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5281B00321AA197600B83A9F /* ThoughtTrackerUITests.swift */; };
+		52D338EE21BF46AD0067083D /* ThoughtsVCEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D338ED21BF46AD0067083D /* ThoughtsVCEmptyState.swift */; };
 		52E7952621B4BF8400ABB36F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7952521B4BF8400ABB36F /* MainTabBarController.swift */; };
 		52E7952821B4C50200ABB36F /* EducationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7952721B4C50200ABB36F /* EducationViewController.swift */; };
 		52E7952A21B4C5A800ABB36F /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7952921B4C5A800ABB36F /* PageViewController.swift */; };
@@ -64,6 +65,7 @@
 		5281AFFF21AA197600B83A9F /* ThoughtTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThoughtTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5281B00321AA197600B83A9F /* ThoughtTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtTrackerUITests.swift; sourceTree = "<group>"; };
 		5281B00521AA197600B83A9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52D338ED21BF46AD0067083D /* ThoughtsVCEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsVCEmptyState.swift; sourceTree = "<group>"; };
 		52E7952521B4BF8400ABB36F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		52E7952721B4C50200ABB36F /* EducationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EducationViewController.swift; sourceTree = "<group>"; };
 		52E7952921B4C5A800ABB36F /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				52E7952521B4BF8400ABB36F /* MainTabBarController.swift */,
 				52E7952721B4C50200ABB36F /* EducationViewController.swift */,
 				52E7952921B4C5A800ABB36F /* PageViewController.swift */,
+				52D338ED21BF46AD0067083D /* ThoughtsVCEmptyState.swift */,
 				5281AFEA21AA197600B83A9F /* Assets.xcassets */,
 				5281AFEF21AA197600B83A9F /* Info.plist */,
 			);
@@ -422,6 +425,7 @@
 				52E7952621B4BF8400ABB36F /* MainTabBarController.swift in Sources */,
 				5206C1C721B481A900F91ACD /* Date+ThoughtTracker.swift in Sources */,
 				5281AFE621AA197500B83A9F /* ThoughtsVC.swift in Sources */,
+				52D338EE21BF46AD0067083D /* ThoughtsVCEmptyState.swift in Sources */,
 				5281AFE421AA197500B83A9F /* AppDelegate.swift in Sources */,
 				5206C1C521B4811D00F91ACD /* ManageThoughtsDelegate.swift in Sources */,
 				52E7952821B4C50200ABB36F /* EducationViewController.swift in Sources */,
