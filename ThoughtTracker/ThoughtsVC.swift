@@ -37,6 +37,7 @@ class ThoughtsVC: UIViewController {
 
     private lazy var emptyState: ThoughtsVCEmptyState = {
         let emptyState = ThoughtsVCEmptyState()
+        emptyState.manageThoughtDelegate = self
         return emptyState
     }()
 
@@ -49,8 +50,9 @@ class ThoughtsVC: UIViewController {
         self.view.addSubview(self.tableView)
         self.view.addSubview(self.emptyState)
         activate(self.tableView.anchor.edges,
-                 self.emptyState.anchor.size.equal.to(50),
-                 self.emptyState.anchor.center
+                 self.emptyState.anchor.bottom.constant(-self.emptyState.frame.height),
+                 self.emptyState.anchor.centerX,
+                 self.emptyState.anchor.paddingHorizontally(10)
         )
         self.tableView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi)
         guard let listOfThoughts = defaults.get(for: thoughtsKey) else { return }
@@ -99,6 +101,10 @@ extension ThoughtsVC: ManageThoughtsDelegate {
     func saveThoughts() {
         defaults.set(self.listOfThoughts, for: thoughtsKey)
         self.toggleEmptyState()
+    }
+
+    func createThought() {
+        self.presentAlert()
     }
 }
 
