@@ -41,6 +41,15 @@ class ThoughtsVC: UIViewController {
         return emptyState
     }()
 
+    private lazy var swipeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Swipe right on a thought to increase the count."
+        label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        return label
+    }()
+
     // MARK: - Lifecyle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +58,13 @@ class ThoughtsVC: UIViewController {
         self.view.backgroundColor = .white
         self.view.addSubview(self.tableView)
         self.view.addSubview(self.emptyState)
+        self.view.addSubview(self.swipeLabel)
         activate(self.tableView.anchor.edges,
-                 self.emptyState.anchor.bottom.constant(-self.emptyState.frame.height),
-                 self.emptyState.anchor.centerX,
-                 self.emptyState.anchor.paddingHorizontally(10)
+                 self.emptyState.anchor.bottom.constant(-120),
+                 self.emptyState.anchor.paddingHorizontally(10),
+                 self.emptyState.anchor.top,
+                 self.swipeLabel.anchor.center,
+                 self.swipeLabel.anchor.paddingHorizontally(10)
         )
         self.tableView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi)
         guard let listOfThoughts = defaults.get(for: thoughtsKey) else { return }
@@ -86,6 +98,7 @@ class ThoughtsVC: UIViewController {
 extension ThoughtsVC {
     private func toggleEmptyState() {
         self.emptyState.isHidden = self.listOfThoughts.count != 0
+        self.swipeLabel.isHidden = self.listOfThoughts.count == 0
     }
 }
 

@@ -39,7 +39,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     }
 
     func configurePageControl() {
-        pageControl = UIPageControl(frame: CGRect(x: 0,y: UIScreen.main.bounds.maxY - 75,width: UIScreen.main.bounds.width,height: 50))
+        pageControl = UIPageControl(frame: CGRect(x: 0,y: UIScreen.main.bounds.maxY, width: UIScreen.main.bounds.width, height: 50))
         self.pageControl.numberOfPages = listOfViewControllers.count
         self.pageControl.currentPage = 0
         self.pageControl.tintColor = .blue
@@ -47,7 +47,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         self.pageControl.currentPageIndicatorTintColor = .blue
         self.view.addSubview(pageControl)
         activate(self.pageControl.anchor.centerX,
-                 self.pageControl.anchor.bottom.constant(-200))
+                 self.pageControl.anchor.bottom.constant(-100))
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {

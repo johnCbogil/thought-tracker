@@ -17,7 +17,7 @@ class ThoughtsVCEmptyState: UIView {
     // MARK: - VIEWS
     let callToActionLabel: UILabel = {
         let label = UILabel()
-        label.text = "This is where you can record your thoughts."
+        label.text = "Keep a list of your intrusive thoughts and how many times they occur each day."
         label.numberOfLines = 0
         label.font = UIFont.systemFont(ofSize: 21, weight: .regular)
         label.textAlignment = .center
@@ -46,8 +46,7 @@ class ThoughtsVCEmptyState: UIView {
         self.addSubview(callToActionButton)
         activate(
             self.callToActionButton.anchor.centerX,
-//            self.callToActionButton.anchor.height.equal.to(<#T##size: CGFloat##CGFloat#>)
-            self.callToActionButton.anchor.bottom.constant(-100),
+            self.callToActionButton.anchor.bottom.constant(0),
             self.callToActionLabel.anchor.bottom.to(self.callToActionButton.anchor.top).constant(-50),
             self.callToActionLabel.anchor.paddingHorizontally(10)
         )
@@ -58,7 +57,6 @@ class ThoughtsVCEmptyState: UIView {
     }
 
     @objc private func createThought() {
-        print("hellooo")
         self.manageThoughtDelegate?.createThought()
     }
 }

@@ -19,6 +19,7 @@ class LearnViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 23, weight: .bold)
         return label
     }()
 
@@ -26,6 +27,8 @@ class LearnViewController: UIViewController {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 21, weight: .regular)
+
         return label
     }()
 
@@ -47,11 +50,11 @@ class LearnViewController: UIViewController {
         self.view.addSubview(self.getStartedButton)
 
         activate(self.questionLabel.anchor.centerX,
-                 self.questionLabel.anchor.top.constant(100),
+                 self.questionLabel.anchor.top.constant(200),
                  self.questionLabel.anchor.paddingHorizontally(15),
                  self.answerLabel.anchor.centerX,
                  self.answerLabel.anchor.paddingHorizontally(15),
-                 self.answerLabel.anchor.top.equal.to(self.questionLabel.anchor.bottom).constant(20),
+                 self.answerLabel.anchor.top.equal.to(self.questionLabel.anchor.bottom).constant(40),
                  self.getStartedButton.anchor.centerX,
                  self.getStartedButton.anchor.paddingHorizontally(15)
         )
