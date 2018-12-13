@@ -21,6 +21,7 @@ class ThoughtCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 23)
         label.textColor = .black
+        label.numberOfLines = 0
         return label
     }()
 
@@ -51,10 +52,13 @@ class ThoughtCell: UITableViewCell {
         self.addGestureRecognizer(self.leftSwipeGestureRecognizer)
         self.addSubview(titleLabel)
         self.addSubview(countLabel)
-        activate(self.titleLabel.anchor.left.constant(20),
-                 self.titleLabel.anchor.centerY,
-                 self.countLabel.anchor.right.constant(-20),
-                 self.countLabel.anchor.centerY)
+        activate(
+            self.titleLabel.anchor.centerY,
+            self.countLabel.anchor.centerY,
+            self.titleLabel.anchor.leading.constant(10),
+            self.countLabel.anchor.trailing.constant(-10),
+            self.titleLabel.anchor.trailing.to(self.countLabel.anchor.leading).constant(-20)
+        )
     }
 
     required init?(coder aDecoder: NSCoder) {

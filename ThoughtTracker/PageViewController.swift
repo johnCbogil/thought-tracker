@@ -35,7 +35,6 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         vc3.index = 2
         self.listOfViewControllers.append(contentsOf: [vc1,vc2,vc3])
         setViewControllers([getViewControllerAtIndex(index: 0)] as [UIViewController], direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
-        
     }
 
     func configurePageControl() {
@@ -47,7 +46,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         self.pageControl.currentPageIndicatorTintColor = .blue
         self.view.addSubview(pageControl)
         activate(self.pageControl.anchor.centerX,
-                 self.pageControl.anchor.bottom.constant(-100))
+                 self.pageControl.anchor.bottom.constant(-50))
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {

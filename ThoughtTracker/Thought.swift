@@ -27,9 +27,9 @@ class Thought: Codable {
     init(date: Date, title: String) {
         self.title = title
 
-                // FOR TESTING
-                let testDate = Date(timeIntervalSinceNow: -570000)
-                self.listOfOccurrences.append(testDate)
+//                // FOR TESTING
+//                let testDate = Date(timeIntervalSinceNow: -570000)
+//                self.listOfOccurrences.append(testDate)
         
         self.formattedOccurrences.append(contentsOf: getFormattedOccurrences())
     }

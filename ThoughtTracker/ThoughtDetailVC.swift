@@ -30,12 +30,21 @@ class ThoughtDetailVC: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.numberOfLines = 0
         return label
     }()
 
     private lazy var deleteButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.trash , target: self, action: #selector(self.deleteThought))
         return button
+    }()
+
+    private lazy var emptyStateLabel: UILabel = {
+        let label = UILabel()
+        label.text = "This is where your previous thought counts will appear."
+        label.isHidden = true
+        label.numberOfLines = 0
+        return label
     }()
 
     // MARK: - LIFECYCLE
@@ -52,16 +61,25 @@ class ThoughtDetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Previous Thoughts"
         self.view.backgroundColor = .white
         self.view.addSubview(self.tableView)
         self.view.addSubview(self.titleLabel)
+        self.view.addSubview(self.emptyStateLabel)
         self.titleLabel.text = self.thought.title
-        activate(self.titleLabel.anchor.centerX,
+        activate(
                  self.titleLabel.anchor.paddingHorizontally(10),
                  self.titleLabel.anchor.top.constant(150),
                  self.tableView.anchor.top.to(self.titleLabel.anchor.bottom),
                  self.tableView.anchor.centerX,
-                 self.tableView.anchor.bottom.left.right)
+                 self.tableView.anchor.bottom.left.right,
+                 self.emptyStateLabel.anchor.centerY,
+                 self.emptyStateLabel.anchor.paddingHorizontally(15))
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.toggleEmptyState()
     }
 
     @objc private func deleteThought() {
@@ -72,6 +90,10 @@ class ThoughtDetailVC: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+
+    private func toggleEmptyState() {
+        self.emptyStateLabel.isHidden = self.formattedOccurrences.count != 0
     }
 }
 

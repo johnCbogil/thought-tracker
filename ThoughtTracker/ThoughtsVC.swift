@@ -63,7 +63,7 @@ class ThoughtsVC: UIViewController {
                  self.emptyState.anchor.bottom.constant(-120),
                  self.emptyState.anchor.paddingHorizontally(10),
                  self.emptyState.anchor.top,
-                 self.swipeLabel.anchor.center,
+                 self.swipeLabel.anchor.top.constant(100),
                  self.swipeLabel.anchor.paddingHorizontally(10)
         )
         self.tableView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi)
