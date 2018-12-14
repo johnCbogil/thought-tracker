@@ -15,7 +15,6 @@ class ThoughtsVC: UIViewController {
     // MARK: - PROPERTIES
     var listOfThoughts = [Thought]()
     let defaults = Defaults(userDefaults: UserDefaults.standard)
-    let thoughtsKey = Key<[Thought]>("thoughtsKey")
 
     // MARK: - VIEWS
     private lazy var tableView: UITableView = {
@@ -67,7 +66,7 @@ class ThoughtsVC: UIViewController {
                  self.swipeLabel.anchor.paddingHorizontally(10)
         )
         self.tableView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi)
-        guard let listOfThoughts = defaults.get(for: thoughtsKey) else { return }
+        guard let listOfThoughts = defaults.get(for: .thoughtsKey) else { return }
         self.listOfThoughts = listOfThoughts
     }
 
@@ -112,7 +111,7 @@ extension ThoughtsVC: ManageThoughtsDelegate {
     }
 
     func saveThoughts() {
-        defaults.set(self.listOfThoughts, for: thoughtsKey)
+        defaults.set(self.listOfThoughts, for: .thoughtsKey)
         self.toggleEmptyState()
     }
 

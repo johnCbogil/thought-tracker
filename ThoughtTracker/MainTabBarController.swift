@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import DefaultsKit
 
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 
@@ -22,7 +23,10 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         pageVC.tabBarItem.image = #imageLiteral(resourceName: "icon_learn")
         pageVC.title = "Learn"
         self.viewControllers = [pageVC, navController]
-        self.selectedIndex = 1
-    }
 
+        self.selectedIndex = 0
+        if let thoughtCount = defaults.get(for: .thoughtsKey), thoughtCount.count > 0 {
+            self.selectedIndex = 1
+        }
+    }
 }

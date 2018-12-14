@@ -73,6 +73,8 @@ class ThoughtCell: UITableViewCell {
 
     // MARK: - PRIVATE HELPERS
     @objc private func incrementThoughtCount() {
+        let generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator.impactOccurred()
         guard let currentCountString = self.countLabel.text else { return }
         guard var currentCountInt = Int(currentCountString) else { return }
         guard let thought = self.thought else { return }
