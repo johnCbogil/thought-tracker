@@ -9,6 +9,7 @@
 import UIKit
 import Anchors
 import DefaultsKit
+import WebKit
 
 class ThoughtsVC: UIViewController {
 
@@ -49,10 +50,16 @@ class ThoughtsVC: UIViewController {
         return label
     }()
 
+    private lazy var feedbackButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(image: UIImage(named: "icon_feedback"), style: .plain, target: self, action: #selector(self.presentFeedbackForm))
+        return button
+    }()
+
     // MARK: - Lifecyle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.rightBarButtonItem = self.addThoughtButton
+        self.navigationItem.leftBarButtonItem = self.feedbackButton
         self.title = "Today's Thoughts"
         self.view.backgroundColor = .white
         self.view.addSubview(self.tableView)
@@ -74,7 +81,20 @@ class ThoughtsVC: UIViewController {
         super.viewDidAppear(animated)
         self.toggleEmptyState()
     }
+}
 
+// MARK: - Private Helpers
+extension ThoughtsVC {
+
+    private func toggleEmptyState() {
+        self.emptyState.isHidden = self.listOfThoughts.count != 0
+        self.swipeLabel.isHidden = self.listOfThoughts.count == 0
+    }
+
+    @objc private func presentFeedbackForm() {
+        self.navigationController?.pushViewController(FeedbackVC(), animated: true)
+    }
+    
     @objc private func presentAlert() {
 
         let alert = UIAlertController(title: "Add thought", message: nil, preferredStyle: .alert)
@@ -90,14 +110,6 @@ class ThoughtsVC: UIViewController {
             }
         }))
         self.present(alert, animated: true, completion: {  })
-    }
-}
-
-// MARK: - Private Helpers
-extension ThoughtsVC {
-    private func toggleEmptyState() {
-        self.emptyState.isHidden = self.listOfThoughts.count != 0
-        self.swipeLabel.isHidden = self.listOfThoughts.count == 0
     }
 }
 

@@ -45,6 +45,7 @@ class ThoughtDetailVC: UIViewController {
         label.text = "This is where your previous thought counts will appear."
         label.isHidden = true
         label.numberOfLines = 0
+        label.textAlignment = .center
         return label
     }()
 

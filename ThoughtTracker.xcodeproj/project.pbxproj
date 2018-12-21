@@ -17,11 +17,13 @@
 		524A2C9621AB41CC00A253F3 /* Thought.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524A2C9521AB41CC00A253F3 /* Thought.swift */; };
 		524A2C9821AB448F00A253F3 /* ThoughtDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524A2C9721AB448F00A253F3 /* ThoughtDetailVC.swift */; };
 		526FC1F121C4380000AEA5D8 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526FC1F021C4380000AEA5D8 /* Defaults.swift */; };
+		527DE54521C6E07D00790062 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 527DE54421C6E07D00790062 /* Launch Screen.storyboard */; };
 		5281AFE421AA197500B83A9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5281AFE321AA197500B83A9F /* AppDelegate.swift */; };
 		5281AFE621AA197500B83A9F /* ThoughtsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5281AFE521AA197500B83A9F /* ThoughtsVC.swift */; };
 		5281AFEB21AA197600B83A9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5281AFEA21AA197600B83A9F /* Assets.xcassets */; };
 		5281AFF921AA197600B83A9F /* ThoughtTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5281AFF821AA197600B83A9F /* ThoughtTrackerTests.swift */; };
 		5281B00421AA197600B83A9F /* ThoughtTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5281B00321AA197600B83A9F /* ThoughtTrackerUITests.swift */; };
+		52BD166521CC7A1500B52382 /* FeedbackVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BD166421CC7A1500B52382 /* FeedbackVC.swift */; };
 		52D338EE21BF46AD0067083D /* ThoughtsVCEmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D338ED21BF46AD0067083D /* ThoughtsVCEmptyState.swift */; };
 		52E7952621B4BF8400ABB36F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7952521B4BF8400ABB36F /* MainTabBarController.swift */; };
 		52E7952821B4C50200ABB36F /* LearnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E7952721B4C50200ABB36F /* LearnViewController.swift */; };
@@ -56,6 +58,7 @@
 		524A2C9521AB41CC00A253F3 /* Thought.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thought.swift; sourceTree = "<group>"; };
 		524A2C9721AB448F00A253F3 /* ThoughtDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtDetailVC.swift; sourceTree = "<group>"; };
 		526FC1F021C4380000AEA5D8 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		527DE54421C6E07D00790062 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		5281AFE021AA197500B83A9F /* ThoughtTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThoughtTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5281AFE321AA197500B83A9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5281AFE521AA197500B83A9F /* ThoughtsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsVC.swift; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 		5281AFFF21AA197600B83A9F /* ThoughtTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ThoughtTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5281B00321AA197600B83A9F /* ThoughtTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtTrackerUITests.swift; sourceTree = "<group>"; };
 		5281B00521AA197600B83A9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52BD166421CC7A1500B52382 /* FeedbackVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackVC.swift; sourceTree = "<group>"; };
 		52D338ED21BF46AD0067083D /* ThoughtsVCEmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThoughtsVCEmptyState.swift; sourceTree = "<group>"; };
 		52E7952521B4BF8400ABB36F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		52E7952721B4C50200ABB36F /* LearnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				5281AFE321AA197500B83A9F /* AppDelegate.swift */,
+				527DE54421C6E07D00790062 /* Launch Screen.storyboard */,
 				5281AFE521AA197500B83A9F /* ThoughtsVC.swift */,
 				5206C1C421B4811D00F91ACD /* ManageThoughtsDelegate.swift */,
 				524A2C9721AB448F00A253F3 /* ThoughtDetailVC.swift */,
@@ -173,6 +178,7 @@
 				526FC1F021C4380000AEA5D8 /* Defaults.swift */,
 				5281AFEA21AA197600B83A9F /* Assets.xcassets */,
 				5281AFEF21AA197600B83A9F /* Info.plist */,
+				52BD166421CC7A1500B52382 /* FeedbackVC.swift */,
 			);
 			path = ThoughtTracker;
 			sourceTree = "<group>";
@@ -303,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				527DE54521C6E07D00790062 /* Launch Screen.storyboard in Resources */,
 				5281AFEB21AA197600B83A9F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +439,7 @@
 				52D338EE21BF46AD0067083D /* ThoughtsVCEmptyState.swift in Sources */,
 				5281AFE421AA197500B83A9F /* AppDelegate.swift in Sources */,
 				5206C1C521B4811D00F91ACD /* ManageThoughtsDelegate.swift in Sources */,
+				52BD166521CC7A1500B52382 /* FeedbackVC.swift in Sources */,
 				52E7952821B4C50200ABB36F /* LearnViewController.swift in Sources */,
 				524A2C9621AB41CC00A253F3 /* Thought.swift in Sources */,
 				524A2C9821AB448F00A253F3 /* ThoughtDetailVC.swift in Sources */,
@@ -599,7 +607,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.johnbogil.ThoughtTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.johnbogil.ThoughtCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -619,7 +627,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.johnbogil.ThoughtTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.johnbogil.ThoughtCounter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
