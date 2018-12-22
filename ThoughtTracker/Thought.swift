@@ -43,7 +43,7 @@ class Thought: Codable {
             datesBetweenArray = Date().generateDatesArrayBetweenTwoDates(startDate: firstDate , endDate: Date())
         }
 
-        // CREATE A DICT OF DATES AND COUNTS FROM DATESBETWEENARRAY WITH COUNTS OF ZERO
+        // CREATE A DICT OF DATES AND COUNTS FROM DATESBETWEENARRAY, ALL COUNTS ZERO
         let dateCountsBetween = datesBetweenArray.reduce(into: [String: Int]()) { dict, date in
             let formatter = DateFormatter()
             formatter.dateStyle = .long
@@ -51,7 +51,7 @@ class Thought: Codable {
             dict[key, default: 0] = 0
         }
         
-        // CREATE A DICT OF DATES AND COUNTS FROM LISTOFOCCURRENCES WITH ACCURATE DATE COUNTS
+        // CREATE A DICT OF DATES AND COUNTS FROM LISTOFOCCURRENCES, WITH ACCURATE DATE COUNTS
         let dateCountsOccurrences = self.listOfOccurrences.reduce(into: [String: Int]()) { dict, date in
             let formatter = DateFormatter()
             formatter.dateStyle = .long
@@ -59,14 +59,14 @@ class Thought: Codable {
             dict[key, default: 0] += 1
         }
 
-        // CHANGE EMPTY DATES INTO DATECOUNTS
+        // CHANGE THE ARRAY WITH ZERO COUNTS INTO DATECOUNT OBJECTS
         var emptyDateCountArray = [DateCount]()
         for (date, count) in dateCountsBetween {
             let dateCountStruct = DateCount(dateString: date, count: count)
             emptyDateCountArray.append(dateCountStruct)
         }
         
-        // CHANGE ACTUAL DATES INTO DATECOUNTS
+        // CHANGE ARRAY WITH ACCURATE COUNTS INTO DATECOUNT OBJECTS
         var actualDateCountsArray = [DateCount]()
         for (date, count) in dateCountsOccurrences {
             let dateCountStruct = DateCount(dateString: date, count: count)
